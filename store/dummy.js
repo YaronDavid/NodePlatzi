@@ -25,7 +25,12 @@ let get = (table, id) => {
 }
 
 let upsert = (table, data) => {
+    if (!db[table]) {  // si la tabla no existe, se crea
+        db[table] = [];
+    }
+    console.log(data)
     db[table].push(data);
+    return data
 }
 
 let remove = (table, id) => {
