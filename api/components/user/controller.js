@@ -17,12 +17,12 @@ module.exports = (injectedStore) => {
             if(data.id){user.id=data.id;}
             else {user.id = nanoid();}
             if(data.password || data.username){
-                await auth(injectedStore).upsert({
-                    id: user.id,
-                    name: user.name,
-                    username: data.username,
-                    password: data.password
-                })
+                // await auth(injectedStore).upsert({
+                //     id: user.id,
+                //     name: user.name,
+                //     username: data.username,
+                //     password: data.password
+                // })
             }
             injectedStore.upsert(table,user)
             return user;

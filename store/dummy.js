@@ -16,7 +16,7 @@ const db = {
 }
 
 let list = (table) => {
-    return db[table];
+    return db[table] || [];
 }
 
 let get = (table, id) => {
@@ -28,7 +28,6 @@ let upsert = (table, data) => {
     if (!db[table]) {  // si la tabla no existe, se crea
         db[table] = [];
     }
-    console.log(data)
     db[table].push(data);
     return data
 }
@@ -38,9 +37,16 @@ let remove = (table, id) => {
     return true
 }
 
+let query = (table, q) =>{
+    col = list(table);
+    let key = Object.keys(q)[0];
+    return col.filter(item=>item[key]===q[key]) || null
+}
+
 module.exports = {
     list,
     get,
     upsert,
-    remove
+    remove,
+    query
 }
