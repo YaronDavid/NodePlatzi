@@ -67,9 +67,14 @@ module.exports = function (injectedStore) {
         return store.upsert(TABLA,user);
     }
 
+    let follow =(from, to)=>{
+        store.upsert
+    }
+
     return {
         list,
         get,
         upsert,
+        follow
     };
 }
